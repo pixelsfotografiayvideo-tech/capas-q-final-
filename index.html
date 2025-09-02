@@ -156,19 +156,26 @@
             color: #fff; /* Color del texto general en esta sección */
         }
 
-        /* Estilos para el título principal */
+        /* Estilos para el título principal (parte estática) */
         .hero-title {
-            font-family: 'The Seasons', serif; /* Usando la fuente personalizada */
+            font-family: 'Montserrat', sans-serif; /* Usando Montserrat para el estilo "Aprende de los" */
             font-size: 3.5rem;
-            font-weight: 400; /* Coincide con el font-weight de The Seasons */
+            font-weight: 600; /* Más bold para simular el estilo */
             line-height: 1.3;
             margin: 0;
+            color: #fff; /* Asegura el color blanco */
         }
 
-        /* Estilos para el texto que se escribe */
+        /* Estilos para el texto que se escribe (parte dinámica) */
         #typing-text {
-            color: var(--brand-brown); /* Usando el color marrón de la marca */
-            font-weight: 400; /* Coincide con el font-weight de The Seasons */
+            font-family: 'Lora', serif; /* Usando Lora para el estilo "peores" */
+            font-style: italic; /* Para la inclinación */
+            color: white; /* El color principal del texto */
+            text-shadow: -1px -1px 0 #000,  /* Borde negro en todas las direcciones */
+                         1px -1px 0 #000,
+                         -1px 1px 0 #000,
+                         1px 1px 0 #000;
+            font-weight: 700; /* Lora bold para que resalte más el contorno */
         }
 
         /* Estilos para el cursor parpadeante */
@@ -323,7 +330,8 @@
 <body class="bg-brand-white text-brand-black">
 
     <header class="fixed top-0 left-0 right-0 z-50 glass-nav-container">
-        <div class="bg-brand-white/80 backdrop-blur-lg border border-black/10 shadow-lg rounded-xl">
+        <!-- Modificado para control de transparencia y blur por JS -->
+        <div id="nav-background" class="bg-opacity-0 backdrop-blur-none border border-black/0 shadow-none rounded-xl transition-all duration-300 ease-in-out">
             <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-20">
                     <img src="https://res.cloudinary.com/dgo3agrzb/image/upload/v1756336934/logo_negro_iv1thc.png" alt="Pixels Fotografía y Video Logo" class="logo-size">
@@ -457,7 +465,9 @@
         <section id="agendar-cita-section" class="bg-brand-black text-brand-white py-24 px-4">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-4xl md:text-5xl tracking-wider mb-4 uppercase">¿LISTA PARA AGENDAR TU CITA?</h2>
-             <!-- SECCIÓN "NOS INVOLUCRAMOS AL 100% EN VUESTRA HISTORIA" (AJUSTADA Y EN SU POSICIÓN FINAL) -->
+                <p class="text-lg mb-12">Agenda tu cita y descubre si soy el fotografo adecuado o no</p>
+                
+                <!-- SECCIÓN "NOS INVOLUCRAMOS AL 100% EN VUESTRA HISTORIA" (AJUSTADA Y EN SU POSICIÓN FINAL) -->
                 <section class="our-story-section">
                     <div class="container">
                         <h3 class="subtitle">NOS INVOLUCRAMOS AL 100% EN SU HISTORIA</h3>
@@ -666,13 +676,36 @@
             // Iniciar el efecto de escritura
             setTimeout(typeEffect, 1000);
         });
+
+        // --- MANEJO DEL EFECTO LIQUID GLASS EN LA NAVEGACIÓN ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const navBackground = document.getElementById('nav-background');
+            const scrollThreshold = 50; // Pixeles scrolled before header changes
+
+            function handleScroll() {
+                if (window.scrollY > scrollThreshold) {
+                    // Agrega las clases para el efecto Liquid Glass
+                    navBackground.classList.add('bg-brand-white/80', 'backdrop-blur-lg', 'border-black/10', 'shadow-lg');
+                    // Remueve las clases del estado transparente inicial
+                    navBackground.classList.remove('bg-opacity-0', 'backdrop-blur-none', 'border-black/0', 'shadow-none');
+                } else {
+                    // Remueve las clases del efecto Liquid Glass
+                    navBackground.classList.remove('bg-brand-white/80', 'backdrop-blur-lg', 'border-black/10', 'shadow-lg');
+                    // Agrega las clases del estado transparente inicial
+                    navBackground.classList.add('bg-opacity-0', 'backdrop-blur-none', 'border-black/0', 'shadow-none');
+                }
+            }
+
+            // Establece el estado inicial al cargar la página (por si ya hay scroll)
+            handleScroll();
+
+            // Escucha el evento de scroll para cambiar el estilo
+            window.addEventListener('scroll', handleScroll);
+        });
     </script>
 
 </body>
-
-
 </html>
-
 
 
 
