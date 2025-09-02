@@ -260,6 +260,20 @@
         }
 
         /* =============================================================== */
+        /* ESTILOS PERSONALIZADOS PARA LAS FUENTES (para usar con Tailwind) */
+        /* =============================================================== */
+        .font-lora {
+            font-family: 'Lora', serif;
+        }
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .font-the-seasons {
+            font-family: 'The Seasons', serif;
+        }
+
+
+        /* =============================================================== */
         /* AJUSTES PARA PANTALLAS PEQUEÑAS (CELULARES) */
         /* =============================================================== */
         @media (max-width: 768px) {
@@ -301,6 +315,25 @@
 
             .our-story-section {
                 padding: 60px 20px; /* Ajuste de padding para pantallas pequeñas */
+            }
+
+            /* Responsive para la nueva sección de "Quién es Ale Azad" */
+            #about-me-section .flex-col {
+                flex-direction: column;
+            }
+            #about-me-section .md\:w-1\/3 {
+                width: 100%;
+                margin-right: 0;
+            }
+            #about-me-section .md\:w-2\/3 {
+                width: 100%;
+            }
+            #about-me-section .md\:text-left {
+                text-align: center;
+            }
+            #about-me-section .md\:mx-0 {
+                margin-left: auto;
+                margin-right: auto;
             }
         }
         
@@ -462,9 +495,41 @@
             </div>
         </section>
 
+        <!-- NUEVA SECCIÓN: QUIÉN ES ALE AZAD -->
+        <section id="about-me-section" class="bg-brand-black text-brand-white py-24 px-4">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center p-8 rounded-lg" style="background-color: #333333;">
+                <!-- Columna de la Imagen -->
+                <div class="w-full md:w-1/3 mb-12 md:mb-0 md:mr-12">
+                    <img src="https://via.placeholder.com/400x500/cccccc/000000?text=Tu+Foto+Aquí" alt="Retrato de Ale Azad" class="rounded-lg shadow-xl mx-auto">
+                </div>
+
+                <!-- Columna del Contenido de Texto -->
+                <div class="w-full md:w-2/3 text-center md:text-left">
+                    <h2 class="text-4xl md:text-5xl tracking-wider mb-6 font-lora">Quién es Ale Azad</h2>
+                    <p class="text-xl md:text-2xl mb-4 font-lora italic">"Construyo presencia. Dirijo imagen. Proyecto poder."</p>
+                    <div class="w-24 h-1 bg-brand-brown mx-auto md:mx-0 mb-8"></div>
+                    <p class="text-lg mb-4 font-montserrat">
+                        Estoy aquí para ayudarte a destacar en un mundo donde
+                        todas compiten por ser vistas.
+                    </p>
+                    <p class="text-lg mb-4 font-montserrat">
+                        Trabajo con modelos que saben que su imagen no es un
+                        adorno, sino su pasaporte a nuevas oportunidades.
+                    </p>
+                    <p class="text-lg font-montserrat">
+                        Cada sesión es una inversión para consolidar tu presencia,
+                        sostener tu valor y proyectar tu imagen en un mundo que
+                        olvida rápido a la que no sabe mostrarse.
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <section id="agendar-cita-section" class="bg-brand-black text-brand-white py-24 px-4">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl md:text-5xl tracking-wider mb-4 uppercase">¿LISTOS PARA AGENDAR SU CITA?</h2>
+                <h2 class="text-4xl md:text-5xl tracking-wider mb-4 uppercase">¿LISTA PARA AGENDAR TU CITA?</h2>
+                <p class="text-lg mb-12">Agenda tu cita y descubre si soy el fotografo adecuado o no</p>
+                
                 <!-- SECCIÓN "NOS INVOLUCRAMOS AL 100% EN VUESTRA HISTORIA" (AJUSTADA Y EN SU POSICIÓN FINAL) -->
                 <section class="our-story-section">
                     <div class="container">
@@ -704,8 +769,6 @@
 
 </body>
 </html>
-
-
 
 
 
